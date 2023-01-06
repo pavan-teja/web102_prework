@@ -51,18 +51,6 @@ function addGamesToPage(games) {
         // append the game to the games-container
         gamesContainer.appendChild(div);
     }
-    // for(let game in games) {
-    //     const newDiv = `<div class="game-card">
-    //     <img class="game-img" src=${games[game].img}>
-    //     <p>${games[game].name}</p>
-    //     <p>${games[game].description}</p>
-    //     <p> Backers : ${games[game].backers}</p>
-    //     </div>`;
-
-    //     document.getElementById("games-container").innerHTML += newDiv;
-    //     console.log(games[game].pledged);
-    // }
-
 }
 
 
@@ -168,21 +156,15 @@ const totalUnfundedGames = GAMES_JSON.reduce((total, game) => {
     return count;
 }, 0);
 
-console.log("Total");
-console.log(totalUnfundedGames);
-
 // create a string that explains the number of unfunded games using the ternary operator
 const totalFundedGames = GAMES_JSON.length - totalUnfundedGames;
 const displayStr = `A total of $${numContributions.toLocaleString('en-US')} has been raised for ${totalFundedGames} games. 
 Currently, ${totalUnfundedGames} ${totalUnfundedGames > 1 ? `remain` : `remains`} unfunded. We need your help to fund these amazing games!`;
 
-console.log(displayStr);
-
 // create a new DOM element containing the template string and append it to the description container
 const p = document.createElement("p");
 const node = document.createTextNode(displayStr);
 p.appendChild(node);
-console.log(p);
 descriptionContainer.appendChild(p);
 
 /************************************************************************************
